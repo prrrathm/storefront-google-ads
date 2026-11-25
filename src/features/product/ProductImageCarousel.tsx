@@ -1,9 +1,8 @@
-import type { GetImageResult } from 'astro';
 import { For, createSignal, onMount } from 'solid-js';
 import Card from '~/components/ui/Card.tsx';
 
 interface ProductImageCarouselProps {
-	productImages: GetImageResult[];
+	productImages: string[];
 }
 
 export function ProductImageCarousel(props: ProductImageCarouselProps) {
@@ -50,10 +49,8 @@ export function ProductImageCarousel(props: ProductImageCarouselProps) {
 						<li class="w-full shrink-0" data-index={index()}>
 							<Card class="flex aspect-square w-full items-center justify-center">
 								<img
-									{...image.attributes}
 									alt=""
-									src={image.src}
-									srcset={image.srcSet.attribute}
+									src={image}
 									loading={index() === 0 ? 'eager' : 'lazy'}
 									draggable={false}
 									class="snap-center"
